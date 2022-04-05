@@ -62,8 +62,8 @@ def make_chains(text_string):
             # We will add the element at the third index that is relative to the current "i" element that is being iterated over
             chains[(words[i], words[i+1])] += [words[i+2]]
 
-            # Note: .append() method works here, too!
-            chains[(words[i], words[i+1])].append(words[i+2])
+            # # Note: .append() method works here, too!
+            # chains[(words[i], words[i+1])].append(words[i+2])
     
     print(chains)
 
