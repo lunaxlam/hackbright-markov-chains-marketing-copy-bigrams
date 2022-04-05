@@ -1,6 +1,6 @@
 """Generate Markov text from text files."""
 
-# From the "random" library import the "choice" function
+# From the "random" library import only the "choice" function
 from random import choice
 
 
@@ -20,7 +20,7 @@ def open_and_read_file(file_path):
 
 
 def make_chains(text_string):
-    """Take input text as string; return dictionary of Markov chains.
+    """Take input text (corpus) as string; return dictionary of Markov chains.
 
     A chain will be a key that consists of a tuple of (word1, word2)
     and the value would be a list of the word(s) that follow those two
