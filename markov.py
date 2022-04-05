@@ -56,11 +56,14 @@ def make_chains(text_string):
         # If the bigram does not already exist in the dictionary then initialize the bigram tuple and set = to the element at the third index
         # The element at the third index is relative to the current "i" element that is being iterated over
         if (words[i], words[i+1]) not in chains:
-            chains[(words[i], words[i+1])] = [words[i+2]]
+            chains[(words[i], words[i+1])] = [words[i+2]]   
         else:
             # If the bigram does already exist in the dictionary then update the value by adding to the existing list of values
             # We will add the element at the third index that is relative to the current "i" element that is being iterated over
             chains[(words[i], words[i+1])] += [words[i+2]]
+
+            # Note: .append() method works here, too!
+            chains[(words[i], words[i+1])].append(words[i+2])
     
     print(chains)
 
