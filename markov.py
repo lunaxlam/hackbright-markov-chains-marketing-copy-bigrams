@@ -3,7 +3,6 @@
 # From the "random" library import only the "choice" function
 from random import choice
 
-
 def open_and_read_file(file_path):
     """Take file path as string; return text as string.
 
@@ -43,7 +42,7 @@ def make_chains(text_string):
         >>> chains[('there','juanita')]
         [None]
     """
-    # Initialize an empty dictionary to store the chains of bigram (key), subsequent word (value) pairs
+    # Initialize an empty dictionary to store the chains of bigram tuple (key), subsequent word (value) pairs
     chains = {}
 
     # Tokenize the file string object into a list using an empty delimiter argument to split the string object by any space
@@ -64,8 +63,6 @@ def make_chains(text_string):
 
             # # Note: .append() method works here, too!
             # chains[(words[i], words[i+1])].append(words[i+2])
-    
-    print(chains)
 
     return chains
 
@@ -73,10 +70,35 @@ def make_chains(text_string):
 def make_text(chains):
     """Return text from chains."""
 
+    # Initialize an empty to list to join as a string to return 
     words = []
 
-    # your code goes here
+    # Get a random key
+    random_key = choice(list(chains.keys()))
 
+    # Append a random value from the random key to our list of words
+    words.append(choice(chains[random_key]))
+
+    # Store the second to last word in the previous key
+    last_key = random_key[1]
+
+    # Repeat until a KeyError is encountered
+    while True:
+        
+        try:
+
+            # Create the new key
+            new_key = (last_key, words[-1])
+            # Append a random value from the new key to our list of words
+            words.append(choice(chains[new_key]))
+            # Update last_key
+            last_key = new_key[1]
+        
+        except KeyError:
+            # Break out of the loop
+            break
+    
+    # Join the elements in the list of words as a string and separate element with a single whitespace
     return ' '.join(words)
 
 
@@ -88,7 +110,7 @@ input_text = open_and_read_file(input_path)
 # Get a Markov chain
 chains = make_chains(input_text)
 
-# # Produce random text
-# random_text = make_text(chains)
+# Produce random text
+random_text = make_text(chains)
 
-# print(random_text)
+print(random_text)
