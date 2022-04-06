@@ -18,6 +18,22 @@ def open_and_read_file(file_path):
     return text_string
 
 
+def open_and_read_two_files(file_path, file_path_2):
+    """Take two file paths as a string; return text as string.
+
+    Takes a string that is a file path, opens the file, and turns
+    the file's contents as one string of text.
+    """
+
+    # Open file as a file object called "f" and read the contents of the file
+    with open (file_path, 'r') as f, open(file_path_2, 'r') as p:
+        # Store the read file contents as a single string object
+        text_string = f.read()
+        text_string += p.read()
+
+    return text_string
+
+
 def make_chains(text_string):
     """Take input text (corpus) as string; return dictionary of Markov chains.
 
@@ -103,6 +119,7 @@ def make_text(chains):
 
 
 input_path = 'gettysburg.txt'
+# input_path2 = 'green-eggs.txt'
 
 # Open the file and turn it into one long string
 input_text = open_and_read_file(input_path)
