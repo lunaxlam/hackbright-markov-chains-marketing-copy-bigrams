@@ -1,5 +1,8 @@
 """Generate Markov text from text files."""
 
+# Import sys library
+import sys
+
 # From the "random" library import only the "choice" function
 from random import choice
 
@@ -118,7 +121,8 @@ def make_text(chains):
     return ' '.join(words)
 
 
-input_path = 'gettysburg.txt'
+# Store the string title of a .txt file
+input_path = sys.argv[1]
 # input_path2 = 'green-eggs.txt'
 
 # Open the file and turn it into one long string
