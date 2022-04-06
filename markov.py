@@ -18,6 +18,8 @@ def open_and_read_file(file_path):
         # Store the read file contents as a single string object
         text_string = f.read()
 
+    # with open() automatically closes the file
+
     return text_string
 
 
@@ -98,7 +100,7 @@ def make_text(chains):
     # Append a random value from the random key to our list of words
     words.append(choice(chains[random_key]))
 
-    # Store the second to last word in the previous key
+    # Store the second to last word from the random key
     last_key = random_key[1]
 
     # Repeat until a KeyError is encountered
